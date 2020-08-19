@@ -28,17 +28,17 @@ interface ICurrentWeatherData {
 export class WeatherService {
   constructor(private httpClient: HttpClient) {}
 
-  static convertKelvinToCelsius(kelvin: number) {
+  private convertKelvinToCelsius(kelvin: number) {
     return kelvin - 273.15;
   }
 
-  static transformToICurrentWeather(data: ICurrentWeatherData): ICurrentWeather {
+  private transformToICurrentWeather(data: ICurrentWeatherData): ICurrentWeather {
     return {
       city: data.name,
       country: data.sys.country,
       date: data.dt * 1000,
       image: `http://openweathermap.org/img/w/${data.weather[0].icon}.png`,
-      temperature: WeatherService.convertKelvinToCelsius(data.main.temp),
+      temperature: this.convertKelvinToCelsius(data.main.temp),
       description: data.weather[0].description,
     };
   }
@@ -53,6 +53,6 @@ export class WeatherService {
         `${environment.baseUrl}api.openweathermap.org/data/2.5/weather`,
         { params: uriParams }
       )
-      .pipe(map((data) => WeatherService.transformToICurrentWeather(data)));
+      .pipe(map((data) => this.transformToICurrentWeather(data)));
   }
 }

@@ -15,7 +15,7 @@ export class CurrentWeatherComponent implements OnInit {
 
   ngOnInit(): void {
     this.weatherService
-      .gerCurrentWeather('Bethesda', 'US')
+      .getCurrentWeather('Bethesda', 'US')
       .subscribe((res) => (this.current = res));
   }
 }

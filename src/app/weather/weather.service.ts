@@ -5,6 +5,10 @@ import { Observable } from 'rxjs';
 import { ICurrentWeather } from '../interfaces';
 import { map } from 'rxjs/operators';
 
+export interface IWeatherService {
+  getCurrentWeather(city: string, country: string): Observable<ICurrentWeather>;
+}
+
 interface ICurrentWeatherData {
   weather: [
     {
@@ -25,7 +29,7 @@ interface ICurrentWeatherData {
 @Injectable({
   providedIn: 'root',
 })
-export class WeatherService {
+export class WeatherService implements IWeatherService {
   constructor(private httpClient: HttpClient) {}
 
   private convertKelvinToCelsius(kelvin: number) {
@@ -43,7 +47,7 @@ export class WeatherService {
     };
   }
 
-  gerCurrentWeather(city: string, country: string): Observable<ICurrentWeather> {
+  getCurrentWeather(city: string, country: string): Observable<ICurrentWeather> {
     const uriParams = new HttpParams()
       .set('q', `${city}, ${country}`)
       .set('appid', environment.appId);

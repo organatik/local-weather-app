@@ -1,11 +1,10 @@
-import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-
-import { CurrentWeatherComponent } from './current-weather.component';
-import { WeatherService } from '../weather/weather.service';
-import { of } from 'rxjs';
-import { fakeWeather } from '../weather/weather.service.fake';
+import { ComponentFixture, TestBed, async } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
+import { of } from 'rxjs';
 
+import { WeatherService } from '../weather/weather.service';
+import { fakeWeather } from '../weather/weather.service.fake';
+import { CurrentWeatherComponent } from './current-weather.component';
 
 describe('CurrentWeatherComponent', () => {
   let component: CurrentWeatherComponent;

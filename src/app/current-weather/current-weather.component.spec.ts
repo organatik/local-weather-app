@@ -53,10 +53,10 @@ describe('CurrentWeatherComponent', () => {
     fixture.detectChanges(); // triggers ngOnInit
     // Assert (утверждение, проверка теста)
     expect(component.current).toBeDefined();
-    expect(component.current.city).toEqual('Bethesda');
+    expect(component.current.city).toEqual('Kyiv');
     // Assert on DOM
     const debugEl = fixture.debugElement;
     const titleEl: HTMLElement = debugEl.query(By.css('span')).nativeElement;
-    expect(titleEl.textContent).toContain('Bethesda');
+    expect(titleEl.textContent).toContain('Kyiv');
   });
 });

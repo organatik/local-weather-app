@@ -56,7 +56,7 @@ describe('CurrentWeatherComponent', () => {
     expect(component.current.city).toEqual('Kyiv');
     // Assert on DOM
     const debugEl = fixture.debugElement;
-    const titleEl: HTMLElement = debugEl.query(By.css('span')).nativeElement;
+    const titleEl: HTMLElement = debugEl.query(By.css('.no-margin')).nativeElement;
     expect(titleEl.textContent).toContain('Kyiv');
   });
 });
